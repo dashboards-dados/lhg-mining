@@ -1,3 +1,4 @@
+# pyrefly: ignore [missing-import]
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -361,7 +362,10 @@ def carregar_dados_relatorio_sheets(json_key_path, sheet_id, sheet_name="Dados")
             return "Biblioteca gspread não instalada."
         
         # Conectar ao Google Sheets
-        gc = gspread.service_account(filename=json_key_path)
+        if hasattr(st, "secrets") and "gcp_service_account" in st.secrets:
+            gc = gspread.service_account_from_dict(dict(st.secrets["gcp_service_account"]))
+        else:
+            gc = gspread.service_account(filename=json_key_path)
         sh = gc.open_by_key(sheet_id)
         worksheet = sh.worksheet(sheet_name)
         
@@ -379,7 +383,10 @@ def carregar_dados_saude_marca_sheets(json_key_path, sheet_id, sheet_name="DADOS
         if not HAS_GSPREAD:
             return "Biblioteca gspread não instalada."
         
-        gc = gspread.service_account(filename=json_key_path)
+        if hasattr(st, "secrets") and "gcp_service_account" in st.secrets:
+            gc = gspread.service_account_from_dict(dict(st.secrets["gcp_service_account"]))
+        else:
+            gc = gspread.service_account(filename=json_key_path)
         sh = gc.open_by_key(sheet_id)
         worksheet = sh.worksheet(sheet_name)
         
