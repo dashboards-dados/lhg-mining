@@ -1,0 +1,74 @@
+File: dados-exemplo/LHG MINING _ Monitoramento - Dados.xlsx
+  Sheet: DIÁRIO
+    Columns: ['Unnamed: 0', 'Unnamed: 1', 'Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7']
+  Sheet: DADOS
+    Columns: ['Unnamed: 0', 'Unnamed: 1', 'Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7', 'Unnamed: 8', 'Unnamed: 9', 'Unnamed: 10', 'Unnamed: 11', 'Unnamed: 12']
+  Sheet: RELATÓRIO
+    Columns: ['Unnamed: 0', 'Unnamed: 1', 'Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7', 'Unnamed: 8', 'Unnamed: 9', 'Unnamed: 10', 'Unnamed: 11', 'Unnamed: 12', 'Unnamed: 13', 'Unnamed: 14', 'Unnamed: 15', 'Unnamed: 16', 'Unnamed: 17', 'Unnamed: 18']
+  Sheet: PORTAIS
+    Columns: ['Unnamed: 0', 'Unnamed: 1', 'Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5']
+  Sheet: Classificação
+    Columns: ['Unnamed: 0', 'URL Site', 'Unnamed: 2', 'Unnamed: 3']
+  Sheet: MODELO
+    Columns: ['Data', 'Plataforma', 'Publicador', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202603
+    Columns: ['Data', 'Plataforma', 'Publicador', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202602
+    Columns: ['Data', 'Plataforma', 'Publicador', 'URL', 'Sentimento', 'Economia / Produção', 'Assunto', 'Caso']
+  Sheet: 202601
+    Columns: ['Data', 'Plataforma', 'Publicador', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202512
+    Columns: ['Data', 'Plataforma', 'Publicador', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202511
+    Columns: ['Data', 'Plataforma', 'Publicador', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202510
+    Columns: ['Data', 'Plataforma', 'Publicador', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202509
+    Columns: ['Data', 'Plataforma', 'Publicador', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202508
+    Columns: ['Data', 'Plataforma', 'Publicador', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202507
+    Columns: ['Data', 'Plataforma', 'Publicador', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 2025
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202506
+    Columns: ['Data', 'Plataforma', 'Portal', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202505
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202504
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202503
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202502
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 202501
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso']
+  Sheet: 2024
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202412
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202411
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202410
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202409
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Positivo', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202408
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202407
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202406
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202405
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202404
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202403
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202402
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+  Sheet: 202401
+    Columns: ['Data', 'Plataforma', 'Usuário', 'URL', 'Sentimento', 'Local', 'Assunto', 'Caso', 'Curtidas', 'Comentários', 'Compartilhamentos']
+File: dados-exemplo/dados-lhg.xlsx
+  Sheet: Dados
+    Columns: ['Data', 'Título', 'Sentimento', 'Portal', 'Link']
