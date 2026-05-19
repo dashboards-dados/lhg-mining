@@ -13,3 +13,8 @@ env/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Environment directories
+desenvolvimento/
+producao/
+

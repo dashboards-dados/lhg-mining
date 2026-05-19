@@ -1,8 +1,0 @@
-DADOS columns: ['Unnamed: 0', 'Ano/Mês', 'Ano', 'Itens coletados', 'Positivo', 'Neutro', 'Negativo', 'Saúde da marca', 'Mato Grosso do Sul', 'Corumbá', 'Ladário', 'Corumbá e Ladário', 'Três Lagoas']
-   Unnamed: 0  Ano/Mês   Ano  ...  Ladário  Corumbá e Ladário  Três Lagoas
-0         NaN  2024/01  2024  ...        0                  0            0
-1         NaN  2024/02  2024  ...        0                  1            0
-2         NaN  2024/03  2024  ...        0                  0            0
-
-[3 rows x 13 columns]
-RELATORIO columns: ['Unnamed: 0', 'Unnamed: 1', 'Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7', 'Unnamed: 8', 'Unnamed: 9', 'Unnamed: 10', 'Unnamed: 11', 'Unnamed: 12', 'Unnamed: 13', 'Unnamed: 14', 'Unnamed: 15', 'Unnamed: 16', 'Unnamed: 17', 'Unnamed: 18']
