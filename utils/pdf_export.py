@@ -23,8 +23,8 @@ def gerar_pdf_completo(df_kpi, df_news, _figs_dict, kpi_data):
         is_cover = True
         
         def header(self):
-            # 1. Background color for all pages: #F8F9FA (Off-white)
-            self.set_fill_color(248, 249, 250)
+            # 1. Background color for all pages: #F8FAFC (Ultra-light Slate)
+            self.set_fill_color(248, 250, 252)
             self.rect(0, 0, 210, 297, 'F')
             
             if self.is_cover or not self.current_section:
@@ -32,7 +32,7 @@ def gerar_pdf_completo(df_kpi, df_news, _figs_dict, kpi_data):
                 
             # 2. Modern section divider
             self.set_font("Helvetica", 'B', 12)
-            self.set_text_color(26, 32, 44) # #1A202C (Texto Principal)
+            self.set_text_color(15, 23, 42) # #0F172A (Texto Principal)
             self.set_xy(25, 15)
             self.cell(100, 10, self.current_section.upper())
             
@@ -42,9 +42,9 @@ def gerar_pdf_completo(df_kpi, df_news, _figs_dict, kpi_data):
             except:
                 pass
                 
-            # Line horizontal inferior: 1px solid #E2E8F0
-            self.set_draw_color(226, 232, 240)
-            self.set_line_width(0.4)
+            # Line horizontal inferior (Orange accent instead of grey for a touch of brand)
+            self.set_draw_color(255, 102, 0)
+            self.set_line_width(0.6)
             self.line(25, 26, 185, 26)
             
             self.set_y(35)
@@ -58,11 +58,11 @@ def gerar_pdf_completo(df_kpi, df_news, _figs_dict, kpi_data):
                 
                 self.set_y(-14)
                 self.set_font("Helvetica", "", 8)
-                self.set_text_color(113, 128, 150) # #718096 (Texto Secundário)
+                self.set_text_color(100, 116, 139) # #64748B (Texto Secundário)
                 
                 # Left side text
                 self.set_x(25)
-                self.cell(100, 10, "LHG Mining | Inteligência Industrial & Mídia", align="L")
+                self.cell(100, 10, "LHG Mining | Inteligência Estratégica", align="L")
                 
                 # Right side pagination
                 self.set_x(140)
@@ -80,34 +80,34 @@ def gerar_pdf_completo(df_kpi, df_news, _figs_dict, kpi_data):
     # --- Capa (Página 1) - Redesenho Total ---
     pdf.add_page()
     
-    # 1. Background color: #F8F9FA
-    pdf.set_fill_color(248, 249, 250)
+    # 1. Background color: #F8FAFC
+    pdf.set_fill_color(248, 250, 252)
     pdf.rect(0, 0, 210, 297, 'F')
     
     # Topo: Nome da empresa LHG MINING spaced out
     pdf.set_y(55)
     pdf.set_font("Helvetica", 'B', 12)
-    pdf.set_text_color(113, 128, 150) # #718096
-    pdf.cell(0, 10, "L H G   M I N I N G", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_text_color(100, 116, 139) # #64748B
+    pdf.cell(0, 10, "M O N I T O R A M E N T O   E S T R A T É G I C O", align="C", new_x="LMARGIN", new_y="NEXT")
     
     # Centro: Título principal
     pdf.set_y(110)
     pdf.set_font("Helvetica", 'B', 26)
-    pdf.set_text_color(26, 32, 44) # #1A202C
-    pdf.cell(0, 15, "RELATÓRIO ESTRATÉGICO", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_text_color(15, 23, 42) # #0F172A
+    pdf.cell(0, 15, "CONSOLIDADO DE INTELIGÊNCIA", align="C", new_x="LMARGIN", new_y="NEXT")
     
     pdf.ln(3)
     pdf.set_font("Helvetica", '', 13)
-    pdf.set_text_color(113, 128, 150) # #718096
-    pdf.cell(0, 10, "Inteligência Industrial & Mídia", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_text_color(100, 116, 139) # #64748B
+    pdf.cell(0, 10, "LHG Mining | Inteligência Industrial", align="C", new_x="LMARGIN", new_y="NEXT")
     
-    # Thin green accent line: #00A86B
-    pdf.set_fill_color(0, 168, 107)
+    # Thin orange accent line: #FF6600
+    pdf.set_fill_color(255, 102, 0)
     pdf.rect(85, 146, 40, 2.5, 'F')
     
     # Rodapé: Data e hora centralizadas
     pdf.set_font("Helvetica", 'I', 9.5)
-    pdf.set_text_color(113, 128, 150)
+    pdf.set_text_color(100, 116, 139)
     pdf.set_xy(25, 235)
     pdf.cell(160, 10, f"Gerado em: {datetime.now().strftime('%d/%m/%Y às %H:%M')}", align="C")
     
@@ -143,7 +143,9 @@ def gerar_pdf_completo(df_kpi, df_news, _figs_dict, kpi_data):
         
         # Left Accent Strip (rounded on external edges)
         if 'SAUDE' in label.upper() or 'SAÚDE' in label.upper():
-            accent_color = (0, 168, 107)
+            accent_color = (255, 102, 0) # Laranja LHG
+        elif 'TOTAL' in label.upper():
+            accent_color = (100, 116, 139) # Slate 500
         elif 'POSITIVA' in label.upper():
             accent_color = (0, 168, 107)
         elif 'NEGATIVA' in label.upper():
@@ -155,12 +157,12 @@ def gerar_pdf_completo(df_kpi, df_news, _figs_dict, kpi_data):
         pdf.rect(x, curr_y, 1.5, card_h, style='F', round_corners=('TOP_LEFT', 'BOTTOM_LEFT'), corner_radius=1.5)
         
         # Text alignment
-        pdf.set_text_color(113, 128, 150) # #718096
+        pdf.set_text_color(100, 116, 139) # #64748B
         pdf.set_font("Helvetica", 'B', 8)
         pdf.set_xy(x + 3, curr_y + 4)
         pdf.cell(col_w - 3, 4, label.upper(), align="C")
         
-        pdf.set_text_color(26, 32, 44) # #1A202C
+        pdf.set_text_color(15, 23, 42) # #0F172A
         pdf.set_font("Helvetica", 'B', 15)
         pdf.set_xy(x + 3, curr_y + 11)
         pdf.cell(col_w - 3, 8, str(value), align="C")
@@ -198,7 +200,7 @@ def gerar_pdf_completo(df_kpi, df_news, _figs_dict, kpi_data):
     pdf.add_page()
     
     pdf.set_font("Helvetica", '', 9.5)
-    pdf.set_text_color(113, 128, 150) # #718096
+    pdf.set_text_color(100, 116, 139) # #64748B
     pdf.cell(0, 5, "Listagem consolidada das publicações mais recentes capturadas pelo sistema.", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(8)
     
@@ -251,7 +253,7 @@ def gerar_pdf_completo(df_kpi, df_news, _figs_dict, kpi_data):
         # --- 1. Combined Header (Portal & Date in Elegant Slate) ---
         pdf.set_xy(33, curr_y + 5)
         pdf.set_font("Helvetica", 'B', 7.5)
-        pdf.set_text_color(113, 128, 150) # Slate 500
+        pdf.set_text_color(100, 116, 139) # Slate 500
         pdf.cell(100, 4, header_text, align="L")
         
         # --- Sentiment Tag Badge in Top Right with subtle borders ---
@@ -318,7 +320,7 @@ def gerar_pdf_completo(df_kpi, df_news, _figs_dict, kpi_data):
     pdf.add_page()
     pdf.set_y(120)
     pdf.set_font("Helvetica", 'B', 12)
-    pdf.set_text_color(113, 128, 150)
+    pdf.set_text_color(100, 116, 139)
     pdf.cell(0, 10, "Relatório desenvolvido por", new_x="LMARGIN", new_y="NEXT", align='C')
     pdf.ln(5)
     try:
