@@ -84,6 +84,7 @@ def render_metrics_tab(df_kpi, x_col_kpi, col_saude, col_saude_plot, disp_atual,
             **plotly_layout_defaults,
             barmode='stack'
         )
+        # Apply rounded corners to bars (supported in newer plotly versions)
         fig_stack.update_traces(
             marker_line_width=0, 
             opacity=0.9, 
@@ -93,3 +94,4 @@ def render_metrics_tab(df_kpi, x_col_kpi, col_saude, col_saude_plot, disp_atual,
             textfont=dict(size=11, family="Inter", color="#FFFFFF", weight="bold")
         )
         st.plotly_chart(fig_stack, use_container_width=True, config={'displayModeBar': False}, theme=None)
+

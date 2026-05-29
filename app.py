@@ -82,6 +82,52 @@ col_portal_news = cols_rel_lower.get('portal') or cols_rel_lower.get('veículo')
 col_titulo_news = cols_rel_lower.get('título') or cols_rel_lower.get('titulo')
 col_link_news = cols_rel_lower.get('link') or cols_rel_lower.get('url')
 
+# --- Header Dinâmico e Filtro ---
+head_col1, head_col2, head_col3 = st.columns([2.5, 0.8, 1])
+
+import base64
+
+with head_col1:
+    lhg_b64 = ""
+    try:
+        img_path = os.path.join(BASE_DIR, "assets", "Lhg-01.webp")
+        with open(img_path, "rb") as img_file:
+            lhg_b64 = base64.b64encode(img_file.read()).decode()
+        img_html = f'<img src="data:image/webp;base64,{lhg_b64}" width="180">'
+    except Exception:
+        img_html = ""
+        
+    st.markdown(f"""
+    <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 32px;">
+        {img_html}
+        <div style="border-left: 4px solid #FF6600; padding-left: 24px;">
+            <h1 style="margin-bottom: 8px; font-size: 2.2rem; color: #0F172A !important; font-weight: 800; letter-spacing: -0.025em;">Monitoramento Estratégico</h1>
+            <p style="color: #64748B; font-size: 1rem; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500;">Consolidado de Inteligência Industrial | LHG Mining</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with head_col2:
+    st.markdown("<div style='margin-top: 24px;'></div>", unsafe_allow_html=True)
+    if x_col_kpi:
+        opcoes_data = ["Todos"] + list(df_kpi[x_col_kpi].unique())
+        data_selecionada = st.selectbox("Mês de Referência", opcoes_data, index=0)
+    else:
+        data_selecionada = "Todos"
+
+# --- Filtro Temporal Global ---
+if data_selecionada != "Todos":
+    df_kpi = df_kpi[df_kpi[x_col_kpi] == data_selecionada]
+    
+    if col_data_news:
+        try:
+            ano_sel, mes_sel = data_selecionada.split('/')
+            df_rel_dt = pd.to_datetime(df_relatorio[col_data_news], dayfirst=True, errors='coerce')
+            mask = (df_rel_dt.dt.year == int(ano_sel)) & (df_rel_dt.dt.month == int(mes_sel))
+            df_relatorio = df_relatorio[mask]
+        except Exception as e:
+            pass
+
 # --- Central de Processamento de Dados e Gráficos (Para Exportação) ---
 col_saude_plot = None
 disp_atual, disp_delta, delta_class = "N/A", "N/A", "delta-neutral"
@@ -149,7 +195,7 @@ if col_sentimento_news:
     
     cont_sent = df_news_plot[col_sentimento_news].value_counts().reset_index()
     cont_sent.columns = ['Sentimento', 'Volume']
-    fig_pie = px.pie(cont_sent, names='Sentimento', values='Volume', color='Sentimento', color_discrete_map=COLOR_MAP, template=PLOTLY_TEMPLATE, hole=0.65)
+    fig_pie = px.pie(cont_sent, names='Sentimento', values='Volume', color='Sentimento', color_discrete_map=COLOR_MAP, template=PLOTLY_TEMPLATE, hole=0.6)
     fig_pie.update_traces(textfont=dict(size=13, color='#334155'), marker=dict(line=dict(color='#FFFFFF', width=3)))
     fig_pie.update_layout(**plotly_layout_defaults, title_text='PROPORÇÃO GLOBAL DE MÍDIA', showlegend=True, legend_orientation='h', legend_yanchor='bottom', legend_y=-0.2, legend_xanchor='center', legend_x=0.5)
     figs_para_pdf['pie'] = fig_pie
@@ -171,7 +217,7 @@ if col_sentimento_news:
             showlegend=True
         )
         fig_portal.update_layout(
-            legend=dict(orientation="h", yanchor="top", y=-0.25, xanchor="center", x=0.5)
+            legend=dict(orientation="h", yanchor="top", y=-0.2, xanchor="center", x=0.5)
         )
         figs_para_pdf['portal'] = fig_portal
 
@@ -198,33 +244,9 @@ if col_sentimento_news:
             figs_para_pdf['time'] = fig_time
         except: pass
 
-# --- Header Dinâmico com Botão de Exportação ---
-head_col1, head_col2 = st.columns([3, 1])
-
-import base64
-
-with head_col1:
-    lhg_b64 = ""
-    try:
-        img_path = os.path.join(BASE_DIR, "assets", "Lhg-01.webp")
-        with open(img_path, "rb") as img_file:
-            lhg_b64 = base64.b64encode(img_file.read()).decode()
-        img_html = f'<img src="data:image/webp;base64,{lhg_b64}" width="180">'
-    except Exception:
-        img_html = ""
-        
-    st.markdown(f"""
-    <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 32px;">
-        {img_html}
-        <div style="border-left: 4px solid #FF6600; padding-left: 24px;">
-            <h1 style="margin-bottom: 8px; font-size: 2.2rem; color: #0F172A !important; font-weight: 800; letter-spacing: -0.025em;">Monitoramento Estratégico</h1>
-            <p style="color: #64748B; font-size: 1rem; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500;">Consolidado de Inteligência Industrial | LHG Mining</p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-with head_col2:
-    st.markdown("<div style='margin-top: 12px;'></div>", unsafe_allow_html=True)
+# --- Botão de Exportação PDF ---
+with head_col3:
+    st.markdown("<div style='margin-top: 52px;'></div>", unsafe_allow_html=True)
     if HAS_FPDF:
         kpi_vals = [
             ("Saude da Marca", disp_atual),
@@ -237,7 +259,7 @@ with head_col2:
                 pdf_bytes = gerar_pdf_completo(df_kpi, df_relatorio, figs_para_pdf, kpi_vals)
             
             st.download_button(
-                label="📥 Exportar Relatório PDF",
+                label="📥 Exportar Relatorio PDF",
                 data=pdf_bytes,
                 file_name=f"Relatorio_Estrategico_LHG_{datetime.now().strftime('%Y%m%d')}.pdf",
                 mime="application/octet-stream"

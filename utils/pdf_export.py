@@ -3,7 +3,7 @@ from datetime import datetime
 import pandas as pd
 import os
 
-# Base path of 'producao/' folder
+# Base path of 'desenvolvimento/' folder
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def gerar_pdf_completo(df_kpi, df_news, _figs_dict, kpi_data):

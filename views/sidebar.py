@@ -2,7 +2,7 @@ import streamlit as st
 import base64
 import os
 
-# Base path of 'producao/' folder
+# Base path of 'desenvolvimento/' folder
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def render_sidebar():
@@ -43,3 +43,4 @@ def render_sidebar():
             """, unsafe_allow_html=True)
         except:
             pass
+
